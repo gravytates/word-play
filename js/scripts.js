@@ -3,13 +3,21 @@ $(document).ready(function() {
 
   $("#formOne").submit(function(event){
     event.preventDefault();
-    var sentence = $("#sentence").val();
+    var sentenceInput = $("#sentence").val();
 
-    $("#result").text(sentence);
+    var sentences = sentenceInput.split(' ');
+
+// everything above here works well
+
+    var newSentences = sentences.map(function(sentence){
+      if (sentence.length >= 3) {
+        return sentence
+      }
+    });
+
+    newSentences.reverse().join(" ");
+
+    $("#result").text(newSentences);
+
   });
-
-
-
-
-
 });
